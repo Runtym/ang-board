@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQL.ANGBOARD">
+  <select id="selectAngBoardList" resultType="angBoard">
+    select * from ang_board
+  </select>
+  <select id="selectAngBoard" resultType="angBoard">
+    select * from ang_board
+    where num=#{num}
+  </select>
+  <insert id="insertAngBoard" parameterType="angBoard">
+  	insert into ang_board
+	(title, content,  wdate,  writer)
+	values
+	(#{title}, #{content}, now(), #{writer}, #{test})
+  </insert>
+  <update id="updateAngBoard" parameterType="angBoard">
+  	update ang_board
+  	<set>
+  		<if test="title!=null">
+  			title = #{title},
+  		</if>
+  		<if test="content!=null">
+  			content = #{content},
+  		</if>
+  		<if test="cnt!=null">
+  			cnt = #{cnt},
+  		</if>
+  		<if test="writer!=null">
+  			writer = #{writer},
+  		</if>
+  	</set>
+  	where num=#{num}
+  </update>
+  <delete id="deleteAngBoard" parameterType="int">
+  	delete from ang_board
+  	where num=#{num}
+  </delete>
+</mapper>
