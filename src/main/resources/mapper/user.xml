@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQL.ANGUSER">
+  <select id="selectAngUserList" resultType="angUser">
+    select * from ang_user
+  </select>
+  <select id="selectAngUser" resultType="angUser" parameterType="angUser">
+    select * from ang_user
+    where id=#{id}
+  </select>
+  <insert id="insertAngUser" parameterType="angUser">
+		insert into ang_user(id,pwd,name)
+		values(#{id},#{pwd},#{name});
+  </insert>
+  <update id="updateAngUser" parameterType="angUser">
+  	update ang_user
+  	<set>
+  		<if test="title!=null">
+  			title = #{title},
+  		</if>
+  		<if test="content!=null">
+  			content = #{content},
+  		</if>
+  		<if test="cnt!=null">
+  			cnt = #{cnt},
+  		</if>
+  		<if test="writer!=null">
+  			writer = #{writer},
+  		</if>
+  	</set>
+  	where num=#{num}
+  </update>
+  <delete id="deleteAngUser" parameterType="int">
+  	delete from ang_user
+  	where num=#{num}
+  </delete>
+</mapper>

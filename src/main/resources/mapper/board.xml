@@ -5,6 +5,18 @@
 <mapper namespace="SQL.ANGBOARD">
   <select id="selectAngBoardList" resultType="angBoard">
     select * from ang_board
+    <where>
+    	<if test="title!=null and title!=''">
+    		and title = #{title}
+    	</if>
+    	<if test="content!=null and content!=''">
+    		and content = #{content}
+    	</if>
+    	<if test="writer!=null and writer!=0">
+    		and writer = #{writer}
+    	</if>
+    </where>
+    order by num desc
   </select>
   <select id="selectAngBoard" resultType="angBoard">
     select * from ang_board
@@ -14,8 +26,8 @@
   	insert into ang_board
 	(title, content,  wdate,  writer)
 	values
-	(#{title}, #{content}, now(), #{writer}, #{test})
-  </insert>
+	(#{title}, #{content}, now(), #{writer})
+  </insert> 
   <update id="updateAngBoard" parameterType="angBoard">
   	update ang_board
   	<set>

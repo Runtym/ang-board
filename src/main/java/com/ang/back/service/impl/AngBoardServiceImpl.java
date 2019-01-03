@@ -15,9 +15,17 @@ public class AngBoardServiceImpl implements AngBoardService {
 	@Autowired
 	private AngBoardDAO abdao;
 	@Override
-	public List<AngBoard> selectAngBoardList() {
+	public List<AngBoard> selectAngBoardList(AngBoard ab) {
+		return abdao.selectAngBoardList(ab);
+	}
+	@Override
+	public int insertAngBoardList(AngBoard ab) {
+		return abdao.insertAngBoardList(ab);
+	}
+	@Override
+	public AngBoard selectAngBoard(Integer num) {
 		// TODO Auto-generated method stub
-		return abdao.selectAngBoardList();
+		return abdao.selectAngBoard(num);
 	}
 
 }
