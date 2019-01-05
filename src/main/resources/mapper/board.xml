@@ -4,18 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SQL.ANGBOARD">
   <select id="selectAngBoardList" resultType="angBoard">
-    select * from ang_board
-    <where>
-    	<if test="title!=null and title!=''">
-    		and title = #{title}
-    	</if>
-    	<if test="content!=null and content!=''">
-    		and content = #{content}
-    	</if>
-    	<if test="writer!=null and writer!=0">
-    		and writer = #{writer}
-    	</if>
-    </where>
+    select ab.*, au.name as 'au.name', au.id as 'au.id' from ang_board ab, ang_user au
+    where ab.writer=au.num
+   	<if test="title!=null and title!=''">
+   		and title = #{title}
+   	</if>
+   	<if test="content!=null and content!=''">
+   		and content = #{content}
+   	</if>
+   	<if test="writer!=null and writer!=0">
+   		and writer = #{writer}
+   	</if>
     order by num desc
   </select>
   <select id="selectAngBoard" resultType="angBoard">
@@ -49,5 +48,13 @@
   <delete id="deleteAngBoard" parameterType="int">
   	delete from ang_board
   	where num=#{num}
+  </delete>
+  <delete id="deleteAngBoardList">
+  	delete from ang_board
+  	where num in
+  	<foreach item="num" index="index" collection="list" 
+  	open="(" separator="," close=")">
+  		#{num}
+  	</foreach>
   </delete>
 </mapper>

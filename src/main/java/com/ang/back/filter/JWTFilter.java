@@ -16,8 +16,7 @@ import com.ang.back.config.JWTFactory;
 
 public class JWTFilter extends GenericFilterBean{
 
-	@Autowired
-	private JWTFactory jwtf;
+	private JWTFactory jwtf = new JWTFactory();
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

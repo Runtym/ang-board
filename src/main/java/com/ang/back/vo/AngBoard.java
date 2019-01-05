@@ -7,6 +7,14 @@ public class AngBoard {
 	private String content;
 	private String wdate;
 	private String writer;
+	private AngUser au;
+	
+	public AngUser getAu() {
+		return au;
+	}
+	public void setAu(AngUser au) {
+		this.au = au;
+	}
 	private int cnt;
 	public int getNum() {
 		return num;

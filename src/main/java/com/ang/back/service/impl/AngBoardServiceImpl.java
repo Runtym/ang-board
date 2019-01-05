@@ -27,5 +27,10 @@ public class AngBoardServiceImpl implements AngBoardService {
 		// TODO Auto-generated method stub
 		return abdao.selectAngBoard(num);
 	}
+	@Override
+	public int deleteAngBoardList(List<Integer> list) {
+		// TODO Auto-generated method stub
+		return abdao.deleteAngBoardList(list);
+	}
 
 }

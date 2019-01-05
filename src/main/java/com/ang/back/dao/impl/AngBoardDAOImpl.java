@@ -26,5 +26,9 @@ public class AngBoardDAOImpl implements AngBoardDAO {
 	public AngBoard selectAngBoard(Integer num) {
 		return ss.selectOne("SQL.ANGBOARD.selectAngBoard",num);
 	}
+	@Override
+	public int deleteAngBoardList(List<Integer> list) {
+		return ss.delete("SQL.ANGBOARD.deleteAngBoardList",list);
+	}
 
 }

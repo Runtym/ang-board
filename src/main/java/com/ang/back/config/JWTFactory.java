@@ -18,7 +18,7 @@ public class JWTFactory {
 	public String generateJWT(String id) {
 		Calendar cal = Calendar.getInstance();
 		Date issueDate = cal.getTime();
-		cal.add(Calendar.MINUTE, 10);
+		cal.add(Calendar.DATE, 10);
 		Date expireDate = cal.getTime();
 		Builder jwt = JWT.create();
 		String tokken = jwt.withIssuedAt(issueDate)

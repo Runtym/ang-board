@@ -1,5 +1,7 @@
 package com.ang.back.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,11 @@ public class AngUserServiceImpl implements AngUserService {
 			return dbAu;
 		}
 		return null;
+	}
+
+	@Override
+	public List<AngUser> selectUserList() {
+		return audao.selectUserList();
 	}
 
 }
