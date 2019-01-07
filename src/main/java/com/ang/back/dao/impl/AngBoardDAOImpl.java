@@ -30,5 +30,9 @@ public class AngBoardDAOImpl implements AngBoardDAO {
 	public int deleteAngBoardList(List<Integer> list) {
 		return ss.delete("SQL.ANGBOARD.deleteAngBoardList",list);
 	}
+	@Override
+	public int updateAngBoard(AngBoard ab) {
+		return ss.insert("SQL.ANGBOARD.updateAngBoard",ab);
+	}
 
 }

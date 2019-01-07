@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,7 +46,11 @@ public class AngBoardController {
 		return map;
 	}
 	@DeleteMapping("/api/angboards")
-	public Integer deleteAngBoards(@RequestBody List<Integer> list) {
+	public Integer deleteAngBoards(@RequestParam(value="nums") List<Integer> list){
 		return abs.deleteAngBoardList(list);
+	}
+	@PutMapping("/api/angboard")
+	public Integer updateAngBoards(@RequestBody AngBoard ab) {
+		return abs.updateAngBoard(ab);
 	}
 }

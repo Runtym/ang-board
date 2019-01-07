@@ -9,4 +9,5 @@ public interface AngBoardDAO {
 	public int insertAngBoardList(AngBoard ab);
 	public AngBoard selectAngBoard(Integer num);
 	public int deleteAngBoardList(List<Integer> list);
+	public int updateAngBoard(AngBoard ab);
 }
